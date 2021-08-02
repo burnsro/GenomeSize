@@ -53,7 +53,7 @@ scripts='/groups/nordborg/projects/transposons/Robin/Alyrata/003scripts'
 python ${scripts}/sam2delta.py ${ref}_${query}.sam 
 
 assemblytics=/groups/nordborg/projects/suecica/005scripts/001Software/Assemblytics/scripts/Assemblytics
-${assemblytics} ${ref}_${query}.sam.delta ${ref}_${query} 250 50 1000000 #500bp anchor min 50bp size and max 1Mb size
+${assemblytics} ${ref}_${query}.sam.delta ${ref}_${query} 250 50 1000000 #250bp anchor min 50bp size and max 1Mb size
 
 #Clean up SV calls
 ml r/3.5.1-foss-2018b
