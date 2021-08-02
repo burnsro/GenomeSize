@@ -12,26 +12,17 @@ for kmer in SeqIO.parse("%s"%options.acc, "fasta"):
 	kmers_acc.add(hash(str(kmer.seq)))
 
 
-#print(kmers_acc)
-#counter=0
+
 out=open('%s.shared'%options.ref, 'w')
 out2=open('%s.unique'%options.ref, 'w')
 kmers_ref=set()
 for record in SeqIO.parse('%s'%options.ref, "fasta"):
 	seq_hash = hash(str(record.seq))
 	kmers_ref.add(hash(str(record.seq)))
-	#print (seq_hash)
 	if seq_hash in kmers_acc:
 		out.write(str(record.seq)+ '\n')	
 	else:
 		out2.write(str(record.seq)+ '\n')
-
-#if (counter/len(kmers_ref)) >= 0.3:
-#	print("1")
-#else:
-#	print("0")
-
-#print(counter)
 
 
 
