@@ -5,7 +5,7 @@
 #SBATCH --qos=short
 #SBATCH --time=0-06:00:00
 #SBATCH --output=%A_%a.Minimap2_SVs.stdout
-#SBATCH --array=1-14
+#SBATCH --array=1-13
 
 CONDA_ENVS_PATH='/groups/nordborg/projects/suecica/005scripts/001Software'
 CONDA_PKGS_DIRS=/opt/anaconda/pkgs='/groups/nordborg/projects/suecica/005scripts/001Software'
@@ -53,7 +53,7 @@ scripts='/groups/nordborg/projects/transposons/Robin/Alyrata/003scripts'
 python ${scripts}/sam2delta.py ${ref}_${query}.sam 
 
 assemblytics=/groups/nordborg/projects/suecica/005scripts/001Software/Assemblytics/scripts/Assemblytics
-${assemblytics} ${ref}_${query}.sam.delta ${ref}_${query} 500 50 1000000 #500bp anchor min 50bp size and max 1Mb size
+${assemblytics} ${ref}_${query}.sam.delta ${ref}_${query} 250 50 1000000 #500bp anchor min 50bp size and max 1Mb size
 
 #Clean up SV calls
 ml r/3.5.1-foss-2018b
