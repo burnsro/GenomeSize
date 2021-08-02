@@ -9,14 +9,12 @@
 
 CONDA_ENVS_PATH='/groups/nordborg/projects/suecica/005scripts/001Software'
 CONDA_PKGS_DIRS=/opt/anaconda/pkgs='/groups/nordborg/projects/suecica/005scripts/001Software'
-#ml anaconda3/2019.03
-#conda create -p /groups/nordborg/projects/suecica/005scripts/001Software/RobinCondaSCRATCH python=2.7 #or 3.6 just run this command once then source it
 cd /groups/nordborg/projects/suecica/005scripts/001Software
 ml anaconda3/2019.03
 source activate RobinCondaSCRATCH3/
 ml matplotlib/3.1.1-foss-2018b-python-3.6.6
 #out='/scratch-cbe/users/robin.burns/002WGA/Minimap2/MN47ref/sam'
-out='/scratch-cbe/users/robin.burns/002WGA/Minimap2/MN47ref/sam/ref_Col0short'
+#out='/scratch-cbe/users/robin.burns/002WGA/Minimap2/MN47ref/sam/ref_Col0short'
 cd $out
 
 samples=$out'/mypairs'
@@ -34,10 +32,6 @@ samtools sort -@16 -o ${ref}_${query}.bam ${ref}_${query}.sam
 samtools index ${ref}_${query}.bam
 mkdir -p ${ref}_${query}
 cd ${ref}_${query}
-#svim-asm haploid $out/${ref}_${query} $out/${ref}_${query}.bam $out/${ref}.softmasked.fasta
-
-#Svim-asm does not output the co-ordinates of the query genome which is needed for downstream analysis
-
 
 #cd $out
 #/groups/nordborg/projects/suecica/005scripts/001Software/minimap2-2.21_x64-linux/minimap2 -c -x asm20 --cs -t 16 ${ref}.softmasked.fasta ${query}.softmasked.fasta > ${ref}_${query}.paf
@@ -59,7 +53,7 @@ scripts='/groups/nordborg/projects/transposons/Robin/Alyrata/003scripts'
 python ${scripts}/sam2delta.py ${ref}_${query}.sam 
 
 assemblytics=/groups/nordborg/projects/suecica/005scripts/001Software/Assemblytics/scripts/Assemblytics
-${assemblytics} ${ref}_${query}.sam.delta ${ref}_${query} 1000 50 1000000
+${assemblytics} ${ref}_${query}.sam.delta ${ref}_${query} 500 50 1000000 #500bp anchor min 50bp size and max 1Mb size
 
 #Clean up SV calls
 ml r/3.5.1-foss-2018b
