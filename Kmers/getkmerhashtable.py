@@ -23,7 +23,7 @@ for record in SeqIO.parse('%s'%options.ref, "fasta"):
 		#out.write(str(record.seq)+ '\n')
 		myseq=str(record.seq)
 		myseqlen=len(myseq)
-		out.write(myseq+ '\t' + myseqlen + '\n')
+		out.write(myseq+ '\t' + str(myseqlen) + '\n')
 	else:
 		out2.write(str(record.seq)+ '\n')
 
