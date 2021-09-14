@@ -20,7 +20,8 @@ for record in SeqIO.parse('%s'%options.ref, "fasta"):
 	seq_hash = hash(str(record.seq))
 	kmers_ref.add(hash(str(record.seq)))
 	if seq_hash in kmers_acc:
-		out.write(str(record.seq)+ '\n')	
+		#out.write(str(record.seq)+ '\n')
+		out.write(str(record.seq)+ '\t' + len(str(record.seq)) + '\n')
 	else:
 		out2.write(str(record.seq)+ '\n')
 
