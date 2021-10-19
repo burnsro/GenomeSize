@@ -5,6 +5,7 @@ ref='/path/to/T2Tfile'
 
 #First call variants using individuals and ploidy then switch to per chromosome
 #Go it through step by step
+# put '#' beside step commands you are not using, sorry it is a little tedious
 
 
 #need to write for loop to make myind the bam file of interest as we
